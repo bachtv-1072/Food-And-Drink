@@ -1,0 +1,33 @@
+<div class="modal" id="myCoupon">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create coupon </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= simple_form_for :coupon, url: admin_coupons_path, remote: true  do |f|%>
+          <% Coupon.formalities.keys.each do |formality| %>
+            <div class="radio">
+              <%= f.radio_button :formality, formality%>
+              <%= f.label "#{:formality}_#{formality.parameterize.underscore}", formality, class:"radio-inline" %>
+            </div>
+          <% end %>
+          <div class="form-content">
+            <label></label>
+            <%= f.text_field :content, class:"form-control" , placeholder:"Enter ..." %>
+          </div>
+          <div class="form-content">
+            <%= f.label :Price_coupon %>
+            <%= f.text_field :price_coupon,class:"form-control" , placeholder:"Enter ..." %>
+          </div> 
+          <%= f.submit "Create", class:"btn btn-warning"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

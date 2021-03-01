@@ -4,9 +4,6 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },format: { with: VALID_EMAIL_REGEX }, uniqueness: true
-  validates :birth, presence: true
-  validates :gender, presence: true
-  validates :encrypted_password, presence: true,length: { minimum: 6 }
 
   
   devise :database_authenticatable, :registerable,
@@ -16,6 +13,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :coupons, dependent: :destroy
   has_many :notifications, foreign_key: :recipient_id
   acts_as_paranoid
   acts_as_voter

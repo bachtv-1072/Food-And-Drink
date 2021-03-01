@@ -17,16 +17,7 @@
             <div class="topbar-right text-center text-md-right">
               <ul class="list-inline">
                 <li><a href="#"><i class="far fa-calendar-alt"></i><%= t(".list_inline5")%></a> </li>
-                <li><a href="#"><i class="far fa-bookmark"></i><%= t(".list_inline6")%> </a></li>                    
-                <li id="quantity-cart-item">
-                  <%= link_to carts_path do %>
-                    <i class="fas fa-shopping-cart"></i>
-                    <%= t(".list_inline7")%> 
-                    <span class="badge badge-pill badge-warning">
-                      <%= link_to "#{current_cart.cart_items.size}", carts_path  %>
-                    </div>
-                  <% end %>
-                </li>
+                <li><a href="#"><i class="far fa-bookmark"></i><%= t(".list_inline6")%> </a></li>   
                 <% if signed_in? %>                                       
                   <li class="nav-item dropdown">
                     <a  class="dropdown-toggle-no-caret" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i><%= current_user.name%><i class="fas fa-caret-down"></i></a>
@@ -42,7 +33,16 @@
                   <li class="nav-item">
                     <%= link_to t(".list_inline8") , login_path, class:"nav-link" %>
                   </li>
-                <% end %>              
+                <% end %>                     
+                <li id="quantity-cart-item">
+                  <%= link_to carts_path do %>
+                    <i class="fas fa-shopping-cart"></i>
+                    <%= t(".list_inline7")%> 
+                    <span class="badge badge-pill badge-warning">
+                      <%= link_to "#{current_cart.cart_items.size}", carts_path  %>
+                    </div>
+                  <% end %>
+                </li>
               </ul>
             </div>
           </div>
@@ -77,7 +77,7 @@
                       <%= link_to t(".item2"), products_path, class:"nav-link"%>
                     </li>
                     <li class="nav-item">
-                      <%= link_to "Category", category_path(Category.first.id), class:"nav-link"%>
+                      <%= link_to "Category", "#", class:"nav-link"%>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#"><%= t(".item3")%></a>
@@ -130,15 +130,10 @@
                   </li>
                   <% if user_signed_in? %>
                     <li class="nav-item btn-group" data-behavior='notifications'>
-                     <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1"  data-toggle="dropdown">  
+                     <a class="nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1"  data-toggle="dropdown">  
                      <i class="fas fa-bell"></i><span data-behavior="unread-count"></span>
                      </a>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
-                     <!--
-                       <a class="dropdown-item" href="#">Action</a>
-                       <a class="dropdown-item" href="#">Another Action</a>
-                       <a class="dropdown-item" href="#">Somethings Action</a>
-                     -->
                      </div>
                     </li>
                   <% end %>

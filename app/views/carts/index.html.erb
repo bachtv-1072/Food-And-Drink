@@ -16,13 +16,13 @@
       <tbody>
         <% @cart_items.each do |cart_item| %>
         <tr>
-          <td> <%= image_tag(cart_item.product.images.first)%> </td>
+          <td> <%= image_tag cart_item.product.images.first if cart_item.product.images.first.present? %> </td>
           <td>
             <%= link_to cart_item.product.name_product, category_product_path(cart_item.product.category, cart_item.product) %>
           </td>
           <td class="buying">
             <div class="create-cart">
-              <%= number_field_tag :quantity, cart_item.quantity , in: 1..99, step:1, 
+              <%= number_field_tag :quantity, cart_item.quantity , in: 1..99, step:1,
                class:"form-control quantity", id:"cart_item_quantity-#{cart_item.id}"%>
             </div>
             <script>
@@ -54,7 +54,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9">
-          <h4> Total the Bill: </h4> 
+          <h4> Total the Bill: </h4>
         </div>
         <div class="col-md-3">
           <h5 id="cart-total-amount">$<%= current_cart.caculate_total_amount.sum%></h5>
@@ -68,4 +68,4 @@
       </div>
     </div>
   </div>
-<% end %>  
+<% end %>

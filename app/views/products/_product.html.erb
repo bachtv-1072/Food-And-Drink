@@ -3,11 +3,11 @@
     <div class="top">
       <div class="top-img">
         <%= link_to category_product_path(product.category.id,product) do %>
-          <%= image_tag product.images.first%>
+          <%= image_tag product.images.first if product.images.first.present?%>
         <% end %>
       </div>
       <div class="logo-img">
-        <%= image_tag product.category.image %>
+        <%= image_tag product.category.image if product.category.image.present?%>
       </div>
       <div class="top-text">
         <div class="heading">

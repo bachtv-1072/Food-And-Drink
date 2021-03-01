@@ -3,9 +3,9 @@ class Order < ApplicationRecord
     belongs_to :address,  optional: true
     belongs_to :user
     
-    
+    has_one :coupon
     enum status: [ :confirm, :cancel, :delivered ]
-    enum payment: {ship_code: 0, online: 1}
+    enum payment: { COD: 0, Online: 1}
 
     acts_as_paranoid
     

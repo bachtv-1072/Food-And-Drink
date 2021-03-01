@@ -1,8 +1,9 @@
 class Cart < ApplicationRecord
   has_many :cart_items
   has_many :products, through: :cart_items
-  
+  has_one :coupon
   has_one :order
+  acts_as_paranoid
 
 
   def caculate_total_amount

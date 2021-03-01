@@ -18,7 +18,6 @@ class ProductsController < ApplicationController
   def show
     @comment = @product.comments.build
     @comments = @product.comments.reject{|i| i.id.blank?}
-    @comments = Kaminari.paginate_array(@comments).page(params[:page]).per(5) 
     @toppings = Topping.all
     @cart_item = @product.cart_items.build
   end

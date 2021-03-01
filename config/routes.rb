@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'homepages#home'
   namespace :admin do
-    get '/', to: 'sessions#new'
+    # get '/', to: 'sessions#new'
     get 'home', to: 'homepages#index'
     get 'chat', to: 'chat#index'
     get 'search', to: 'homepages#search'
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
     end
     resources :orders, only: [:index]
+    resources :coupons
   end
 
 

@@ -1,0 +1,6 @@
+<li class="nav-item" role="presentation">
+  <%= link_to "#", class:"nav-link active" do %>
+    <b class="quality-comment"><%= pluralize( @product.comments.count, "comment")%></b>
+    <span class="text-comment"></span> 
+  <% end %>
+</li>

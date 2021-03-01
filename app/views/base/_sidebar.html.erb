@@ -32,16 +32,16 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link active">
+              <%= link_to admin_orders_path, class:"nav-link active" do %>
                 <i class="far fa-circle nav-icon change"></i>
-                <p class="change">Active Page</p>
-              </a>
+                <p class="change">Manage Orders</p>
+              <% end %>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <%= link_to admin_coupons_path, class:"nav-link" do %>
                 <i class="far fa-circle nav-icon change"></i>
-                <p class="change">Inactive Page</p>
-              </a>
+                <p class="change">Events & Coupons</p>
+              <% end %>
             </li>
           </ul>
         </li>
@@ -103,7 +103,7 @@
               <li class="nav-item">
                 <%= link_to admin_toppings_path, class:"nav-link" do%>
                   <i class="far fa-circle nav-icon change"></i>
-                  <p class="change">List Toppings</p>
+                  <p class="change">List Orders</p>
                 <% end %>
               </li> 
             </ul>

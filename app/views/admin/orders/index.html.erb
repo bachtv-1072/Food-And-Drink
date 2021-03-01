@@ -1,0 +1,37 @@
+ <div class="container">
+  <table id="dataManageOrder" class="table">
+    <thead>
+      <tr>
+        <th>Code Order</th>
+        <th>Created Day</th>
+        <th>Product</th>
+        <th>Total Price</th>
+        <th>Total Price After Coupon</th>
+        <th> Status </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @list_all_orders.each do |order|%>
+        <tr>
+          <td><%= order.order_code %></td>
+          <td><%= order.created_at.to_date%></td>
+          <td>
+            <% order.cart.products.with_deleted.each do |product| %>
+              <%= product.name_product + ',' %>
+            <% end %>
+          </td>
+          <td>$<%= order.save_price_to_order.to_f %></td>
+          <td></td>
+          <td><%= order.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $(document).ready(function() {
+      $('#dataManageOrder').dataTable()
+    });
+  });
+</script>

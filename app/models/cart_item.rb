@@ -1,8 +1,9 @@
 class CartItem < ApplicationRecord
-  belongs_to :product
+  belongs_to :product, optional: true
   belongs_to :cart, optional: true
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  acts_as_paranoid
 
   before_save :set_save_price_to_cart_item
 
@@ -14,7 +15,7 @@ class CartItem < ApplicationRecord
       product.price
     end
   end
-  def get_total_price 
+  def get_total_price
     save_price_to_cart_item * quantity
   end
   private
